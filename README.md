@@ -26,5 +26,4 @@ Tek bir yerel binary Ã¼retir, .NET runtime gerekmez. Program sistemdeki `curl`'Ã
 ```
 make
 sudo make install
-make test
 ```

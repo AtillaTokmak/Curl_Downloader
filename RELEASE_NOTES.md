@@ -2,7 +2,7 @@
 
 ## 🛡️ Overview
 
-`curldl` v1.1.0 introduces critical security hardening, strict protocol enforcement, safer process execution, and a dedicated automated test suite while maintaining its core design philosophy: a zero-dependency, single-file C++17 utility for Linux.
+`curldl` v1.1.0 introduces critical security hardening, strict protocol enforcement, safer process execution, and robust error handling while maintaining its core design philosophy: a zero-dependency, single-file C++17 utility for Linux.
 
 ---
 
@@ -38,21 +38,11 @@
 
 ---
 
-## 🧪 Test Suite & Build System
-
-- **Automated Test Suite:** Added [test_curldl.cpp](file:///C:/Users/Atill/Desktop/curl_downloader/test_curldl.cpp) with zero external testing dependencies. Tests URL scheme validation, path sanitization, RFC 5987 parsing, and collision defenses.
-- **Makefile Update:** Added `test` and `test_runner` targets to [Makefile](file:///C:/Users/Atill/Desktop/curl_downloader/Makefile).
-
----
-
-## 🚀 Building & Testing
+## 🚀 Building & Installation
 
 ```bash
 # Build binary
 make
-
-# Run automated tests
-make test
 
 # Install globally
 sudo make install

@@ -327,7 +327,6 @@ static void usage(const char* prog) {
               << "  -o   dosya adini elle ver (otomatik tespiti atlar)\n";
 }
 
-#ifndef CURLDL_NO_MAIN
 int main(int argc, char* argv[]) {
     std::string url, name;
     for (int i = 1; i < argc; ++i) {
@@ -432,4 +431,3 @@ int main(int argc, char* argv[]) {
     }
     return WIFEXITED(status) ? WEXITSTATUS(status) : 1;
 }
-#endif
