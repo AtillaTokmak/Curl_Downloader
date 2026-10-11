@@ -1,3 +1,18 @@
+# Release Notes - `curldl` v1.2.0 (Hardening, pass 2)
+
+- **Atomic download:** curl writes to a `mkstemp` temp file (`.curldl-XXXXXX`) that is `rename()`d onto the target only on success. Symlinks planted at the target are never followed; failures/Ctrl+C leave no partial file and never truncate an existing file.
+- **Signal handling:** SIGINT/SIGTERM/SIGHUP are forwarded to curl, the temp file is removed, exit code is `128+signal`.
+- **`~/.curlrc` ignored:** `-q` is passed to every curl call.
+- **Content-Disposition** is taken only from the final 2xx response, not from intermediate redirects.
+- **Terminal escape injection:** all names/URLs printed to stderr are escaped; filenames with invalid UTF-8 or C1 control characters are rejected.
+- **URL validation:** control characters/whitespace rejected; `user@host`, IPv6 `[::1]:port` supported; empty host rejected.
+- **Limits:** probe output capped at 1 MiB, max 10 redirects, filenames over 255 bytes rejected.
+- **Dotfiles:** leading dots stripped from automatically chosen names (`.bashrc` -> `bashrc`). `-o` with a directory path now errors.
+
+Verified on Linux: `g++ -std=c++17 -Wall -Wextra -Werror` builds clean; `file://` URL rejected (exit 1); HTTPS download succeeds (exit 0) with no temp file left behind.
+
+---
+
 # Release Notes - `curldl` v1.1.0 (Security Hardening & Robustness Update)
 
 ## 🛡️ Overview

@@ -17,6 +17,15 @@ Dosya adı sırayla şuradan bulunur:
 
 Aynı adlı dosya varsa üzerine yazmadan önce sorar.
 
+## Güvenlik davranışı
+
+- Sadece `http://` ve `https://` kabul edilir; yönlendirmeler de bu protokollerle sınırlıdır (en fazla 10).
+- `~/.curlrc` yok sayılır (`curl -q`).
+- İndirme önce gizli bir geçici dosyaya (`.curldl-XXXXXX`) yapılır, başarılı olursa hedefe taşınır. Hata veya Ctrl+C durumunda mevcut dosya bozulmaz, yarım dosya kalmaz.
+- Hedef bir dizin, sembolik bağ veya özel dosyaysa indirme yapılmaz.
+- Sunucudan/URL'den gelen adlarda baştaki `.` ve `-` silinir (`.bashrc` -> `bashrc`); `-o` ile dizin içeren ad verilemez.
+- Terminale basılan ad/URL'lerdeki kontrol karakterleri `\xNN` olarak gösterilir.
+
 ## Neden C++?
 
 Tek bir yerel binary üretir, .NET runtime gerekmez. Program sistemdeki `curl`'ü çağırır, `libcurl-dev` de gerekmez. Sadece `g++` ve `curl` yeter.
